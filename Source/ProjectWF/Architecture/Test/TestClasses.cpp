@@ -7,6 +7,11 @@ void FWFTestModel::Tick(float DeltaTime)
 	FWFModelBase::Tick(DeltaTime);
 }
 
+void FWFTestView::Tick(float DeltaTime)
+{
+	FWFViewBase::Tick(DeltaTime);
+}
+
 void AWFTestGameMode::StartPlay()
 {
 	Super::StartPlay();
