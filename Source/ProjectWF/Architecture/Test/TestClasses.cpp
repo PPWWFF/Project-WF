@@ -31,3 +31,11 @@ void AWFTestGameMode::AddAgent()
  	testModel->AddModelAgent(testModelAgent);
  	testView->AddViewAgent(testModelAgent->GetViewAgent());
 }
+
+UWFTestAgentComponent::UWFTestAgentComponent()
+{
+}
+
+AWFTestActor::AWFTestActor()
+{
+}
