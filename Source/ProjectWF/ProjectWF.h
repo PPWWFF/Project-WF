@@ -13,12 +13,12 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
-	static inline FProjectWFModule& Get()
+	static FProjectWFModule& Get()
 	{
 		return FModuleManager::LoadModuleChecked< FProjectWFModule >("ProjectWF");
 	}
 
-	static inline bool IsAvailable()
+	static bool IsAvailable()
 	{
 		return FModuleManager::Get().IsModuleLoaded("ProjectWF");
 	}
