@@ -1,18 +1,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Architecture/WFAgentBase.h"
 
-class FWFViewAgentBase
+class FWFViewAgentBase : public FWFAgentBase
 {
 public:
-	FWFViewAgentBase()=delete;
-	FWFViewAgentBase(uint64 id);
-
-	uint64 GetId()
-	{
-		return Id;
-	}
-
-private:
-	uint64 Id=0;
+	explicit FWFViewAgentBase(uint64 id);
 };

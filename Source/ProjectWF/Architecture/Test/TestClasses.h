@@ -22,19 +22,13 @@ public:
 class FWFTestModelAgent : public FWFModelAgentBase
 {
 public:
-	FWFTestModelAgent(uint64 id)
-		: FWFModelAgentBase(id)
-	{
-	}
+	explicit FWFTestModelAgent(uint64 id);
 };
 
 class FWFTestViewAgent : public FWFViewAgentBase
 {
 public:
-	FWFTestViewAgent(uint64 id)
-		: FWFViewAgentBase(id)
-	{
-	}
+	explicit FWFTestViewAgent(uint64 id);
 };
 
 UCLASS(Blueprintable)

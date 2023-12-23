@@ -1,21 +1,22 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Architecture/WFAgentBase.h"
 
+class FWFModelBase;
 class FWFViewAgentBase;
 
-class FWFModelAgentBase
+class FWFModelAgentBase : public FWFAgentBase
 {
 public:
-	FWFModelAgentBase() = delete;
-	FWFModelAgentBase(uint64 id);
+	virtual ~FWFModelAgentBase() override = default;
 
-	const uint64 GetId();
+	explicit FWFModelAgentBase(uint64 id);
 
-	virtual TSharedPtr<FWFViewAgentBase> GetViewAgent();
-	
+
+	virtual void Tick(float deltaTime) override;
+
+	void SetViewAgent(TSharedPtr<FWFViewAgentBase> viewAgent);
 protected:
-	uint64 Id = 0;
-
-	TSharedPtr<FWFViewAgentBase> ViewAgent = nullptr;
+	TWeakPtr<FWFViewAgentBase> ViewAgentPtrCache = nullptr;
 };

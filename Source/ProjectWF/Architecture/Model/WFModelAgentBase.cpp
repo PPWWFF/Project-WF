@@ -1,24 +1,17 @@
 #include "WFModelAgentBase.h"
 
+#include "WFModelBase.h"
 #include "Architecture/View/WFViewAgentBase.h"
+#include "Core/WFDebug.h"
 
-FWFModelAgentBase::FWFModelAgentBase(uint64 id)
-	: Id(id)
+FWFModelAgentBase::FWFModelAgentBase(uint64 id): FWFAgentBase(id)
+{}
+
+void FWFModelAgentBase::Tick(float deltaTime)
 {
 }
 
-const uint64 FWFModelAgentBase::GetId()
+void FWFModelAgentBase::SetViewAgent(TSharedPtr<FWFViewAgentBase> viewAgent)
 {
-	return Id;
-}
-
-TSharedPtr<FWFViewAgentBase> FWFModelAgentBase::GetViewAgent()
-{
-	if(!ViewAgent.IsValid())
-	{
-		//이미 있는데 또만들기 금지
-		ViewAgent = MakeShareable(new FWFViewAgentBase(Id));
-	}
-	
-	return ViewAgent;
+	ViewAgentPtrCache = viewAgent;
 }

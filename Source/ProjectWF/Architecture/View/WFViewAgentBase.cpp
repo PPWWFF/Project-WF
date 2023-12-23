@@ -1,6 +1,5 @@
 #include "WFViewAgentBase.h"
 
-FWFViewAgentBase::FWFViewAgentBase(uint64 id)
-	: Id(id)
+FWFViewAgentBase::FWFViewAgentBase(uint64 id) : FWFAgentBase(id)
 {
 }

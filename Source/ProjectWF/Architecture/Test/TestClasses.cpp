@@ -12,6 +12,13 @@ void FWFTestView::Tick(float DeltaTime)
 	FWFViewBase::Tick(DeltaTime);
 }
 
+FWFTestModelAgent::FWFTestModelAgent(uint64 id): FWFModelAgentBase(id)
+{
+}
+
+FWFTestViewAgent::FWFTestViewAgent(uint64 id):FWFViewAgentBase(id)
+{}
+
 void AWFTestGameMode::StartPlay()
 {
 	Super::StartPlay();
@@ -28,13 +35,17 @@ void AWFTestGameMode::AddAgent()
  	TSharedPtr<FWFTestView> testView = FWFMvcHolder::Get().GetTestView();
  	if(!testView.IsValid())
  		return;
- 	
- 	TSharedPtr<FWFTestModelAgent> testModelAgent = MakeShareable(new FWFTestModelAgent(testModel->GetUniqueId()));
+	uint64 newUniqueId = testModel->GetUniqueId();
+	TSharedPtr<FWFTestModelAgent> testModelAgent = MakeShareable(new FWFTestModelAgent(newUniqueId));
  	if(!testModelAgent.IsValid())
  		return;
+
+	TSharedPtr<FWFTestViewAgent> testViewAgent = MakeShareable(new FWFTestViewAgent(newUniqueId));
+	if(!testViewAgent.IsValid())
+		return;
  
- 	testModel->AddModelAgent(testModelAgent);
- 	testView->AddViewAgent(testModelAgent->GetViewAgent());
+ 	testModel->AddAgent(testModelAgent);
+ 	testView->AddAgent(testViewAgent);
 }
 
 UWFTestAgentComponent::UWFTestAgentComponent()
