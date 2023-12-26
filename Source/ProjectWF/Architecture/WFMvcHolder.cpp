@@ -42,33 +42,40 @@ void FWFMvcHolder::Terminate()
 
 void FWFMvcHolder::Start()
 {
-	TestModel = MakeShareable(new FWFTestModel());
-	TestView = MakeShareable(new FWFTestView());
 }
 
 void FWFMvcHolder::Shutdown()
 {
-	TestModel.Reset();
-	TestView.Reset();
 }
 
 void FWFMvcHolder::Tick(float deltaTime)
 {
-	if (TestModel.IsValid())
+	if (OAModel.IsValid())
 	{
-		TestModel->Tick(deltaTime);
+		OAModel->Tick(deltaTime);
 	}
-	if (TestView.IsValid())
+	if (OAView.IsValid())
 	{
-		TestView->Tick(deltaTime);
+		OAView->Tick(deltaTime);
 	}
 }
 
-TSharedPtr<FWFTestModel> FWFMvcHolder::GetTestModel()
+void FWFMvcHolder::SetOAModel(TSharedPtr<FWFModelBase> inOAModel)
 {
-	return TestModel;
+	OAModel=inOAModel;
 }
-TSharedPtr<FWFTestView> FWFMvcHolder::GetTestView()
+
+void FWFMvcHolder::SetOAView(TSharedPtr<FWFViewBase> inOAView)
 {
-	return TestView;
+	OAView=inOAView;
+}
+
+TSharedPtr<FWFModelBase> FWFMvcHolder::GetOAModel()
+{
+	return OAModel;
+}
+
+TSharedPtr<FWFViewBase> FWFMvcHolder::GetOAView()
+{
+	return OAView;
 }
