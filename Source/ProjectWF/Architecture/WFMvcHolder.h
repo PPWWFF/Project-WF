@@ -4,8 +4,8 @@
 #include "Templates/SharedPointer.h"
 #include "UObject/GCObject.h"
 
-class FWFTestView;
-class FWFTestModel;
+class FWFModelBase;
+class FWFViewBase;
 
 class FWFMvcHolder : public FGCObject, public TSharedFromThis<FWFMvcHolder>
 {
@@ -27,13 +27,16 @@ public:
 	void Shutdown();
 	void Tick(float deltaTime);
 
-	TSharedPtr<FWFTestModel> GetTestModel();
-	TSharedPtr<FWFTestView> GetTestView();
+	void SetOAModel(TSharedPtr<FWFModelBase> inOAModel);
+	TSharedPtr<FWFModelBase> GetOAModel();
+
+	void SetOAView(TSharedPtr<FWFViewBase> inOAView);
+	TSharedPtr<FWFViewBase> GetOAView();
 
 private:
 	inline static TSharedPtr<FWFMvcHolder> SingleInstance = nullptr;
-
-	TSharedPtr<FWFTestModel> TestModel = nullptr;
-	TSharedPtr<FWFTestView> TestView = nullptr;
+	
+	TSharedPtr<FWFModelBase> OAModel = nullptr;
+	TSharedPtr<FWFViewBase> OAView = nullptr;
 	
 };

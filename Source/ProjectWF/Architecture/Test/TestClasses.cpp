@@ -28,7 +28,7 @@ void AWFTestGameMode::StartPlay()
 
 void AWFTestGameMode::AddAgent()
 {
-	TSharedPtr<FWFTestModel> testModel = FWFMvcHolder::Get().GetTestModel();
+	/*TSharedPtr<FWFTestModel> testModel = FWFMvcHolder::Get().GetTestModel();
  	if(!testModel.IsValid())
  		return;
  
@@ -45,7 +45,7 @@ void AWFTestGameMode::AddAgent()
 		return;
  
  	testModel->AddAgent(testModelAgent);
- 	testView->AddAgent(testViewAgent);
+ 	testView->AddAgent(testViewAgent);*/
 }
 
 UWFTestAgentComponent::UWFTestAgentComponent()
